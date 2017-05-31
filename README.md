@@ -19,6 +19,8 @@ npm install -g babel-cli
 npm install
 ```
 
+
+
 ## Run the project
 
 ### To run the project just do this:
@@ -26,7 +28,8 @@ npm install
 npm start
 ```
 
-### To get out, to that: CTRL+C or CMD+C
+### To get out, do that: CTRL+C or CMD+C
+
 
 
 ## Observations
