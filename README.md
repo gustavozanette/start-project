@@ -1,33 +1,34 @@
 # Start Project
 Instructions to use the start-project
 
-### Instructions
+## Instructions
 
-* To use the project you need Gulp and Babel;
-1) Gulp
+### To use the project you need Gulp and Babel;
+
+* [Gulp](http://gulpjs.com/)
 ```
 npm install -g gulp
 ```
-2) Babel
+* [Babel](https://babeljs.io/)
 ```
 npm install -g babel-cli
 ```
 
-* Dependencies
+### Install dependencies
 ```
 npm install
 ```
 
-### Run project
+## Run the project
 
-* Running the project:
+### To run the project just do this:
 ```
 npm start
 ```
 
-* Get out: CTRL+C or CMD+C
+### To get out, to that: CTRL+C or CMD+C
 
 
-### OBSERCATIONS
+## Observations
 
-* To add Javascript plugins, is necessary to add on gulpfile the path. Thats needed because of the load order.
+To add Javascript plugins, is necessary to add on gulpfile the path. Thats needed because of the load order.
