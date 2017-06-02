@@ -35,3 +35,18 @@ npm start
 ## Observations
 
 To add Javascript plugins, is necessary to add on gulpfile the path. Thats needed because of the load order.
+
+
+
+# Tests
+
+## Instructions
+
+* Run:
+```
+npm test
+```
+
+* open [http://localhost:9876/](http://localhost:9876/)
+
+* Have fun

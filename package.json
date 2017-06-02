@@ -26,6 +26,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "3.0.7",
     "gulp-watch": "^4.3.11",
+    "jasmine-core": "^2.6.2",
     "karma": "^1.7.0",
     "karma-browserify": "^5.1.1",
     "karma-jasmine": "^1.1.0",
