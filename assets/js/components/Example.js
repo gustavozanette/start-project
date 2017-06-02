@@ -1,9 +1,9 @@
 class Example {
-	construct() {
-		this.greeting = "Hellp";
+	constructor() {
+		this.greeting = "Hello";
 	}
 	hello() {
-		console.log(this.greeting);
+		return this.greeting;
 	}
 }
 

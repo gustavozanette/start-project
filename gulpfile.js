@@ -1,3 +1,4 @@
+/* Gulp Dependencies */
 var gulp = require('gulp'),
 	uglify = require("gulp-uglify"),
 	streamify = require("gulp-streamify"),
@@ -8,14 +9,27 @@ var gulp = require('gulp'),
 	concat = require("gulp-concat"),
 	cleanCSS = require('gulp-clean-css'),
 	source = require('vinyl-source-stream'),
-	gutil = require('gulp-util');
+	gutil = require('gulp-util'),
+	Server = require('karma').Server;
 
-var plugins = [//Adicione os plugins em ordem de load
+/* Plugins list in load order */
+var plugins = [
 	'./assets/js/libs/jquery-1.12.4.js',
 	'./assets/js/libs/jquery.validate.js',
 	'./assets/js/libs/jquery.mask.js',
 	'./assets/js/libs/bootstrap.js'
 ];
+/* Test scripts */
+var test_dependencies = [
+	'./assets/js/plugins.min.js',
+	'./assets/js/script.min.js',
+	'./tests/spec/**/*_spec.js'
+];
+
+
+/*-----
+-------Tasks
+-------*/
 
 /* Scripts */
 gulp.task('scripts', function() {
@@ -37,7 +51,7 @@ gulp.task('js_plugins', function() {
 
 /* Styles */
 gulp.task('styles', function() {
-    gulp.src(['assets/scss/style.scss'])
+    return gulp.src(['assets/css/scss/style.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(sass({outputStyle: 'compressed'}))
         .pipe(rename({
@@ -46,21 +60,37 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('./assets/css/'));
 });
 gulp.task('css_plugins', function() {
-	return gulp.src(['./assets/scss/libs/*.css', './assets/scss/libs/*.scss'])
+	return gulp.src(['./assets/css/scss/libs/*.css', './assets/css/scss/libs/*.scss'])
 		.pipe(sass().on('error', sass.logError))
         .pipe(concat('plugins.min.css'))
         .pipe(cleanCSS({compatibility: 'ie9'}))
         .pipe(gulp.dest('./assets/css/'));
 });
 
-/*  */
+/* Karma testing */
+gulp.task('test', function (done) {
+	new Server({
+        configFile: __dirname + '/karma.conf.js'
+    }, function () {
+        done();
+    }).start();
+});
+
+/* Watch */
 gulp.task('watch',function() {
 	/* Scrips */
 	gulp.watch(['./assets/js/components/**/*.js'],['scripts']);
 	gulp.watch(['./assets/js/libs/*.js'],['js_plugins']);
 	/* Styles */
+	gulp.watch(['./assets/css/scss/style.scss', './assets/css/scss/components/**/*.scss'],['styles']);
 	gulp.watch(['./assets/css/libs/*.css'],['css_plugins']);
-	gulp.watch(['./assets/css/style.css'],['styles']);
 });
 
-gulp.task('default', ['scripts','js_plugins','styles','css_plugins','watch']);
+/* Default */
+gulp.task('default', [
+		'scripts',
+		'js_plugins',
+		'styles',
+		'css_plugins',
+		'watch'
+	]);
