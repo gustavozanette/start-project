@@ -1,5 +1,12 @@
 # Start Project
-Instructions to use the start-project
+This is a start setup to begin a project without the need to worry to much about dependecies.
+
+Initial setup includes:
+* Bootstrap
+* FontAwesome
+* A bunch of metas
+* ES6 support
+
 
 ## Instructions
 
@@ -19,6 +26,9 @@ npm install -g babel-cli
 npm install
 ```
 
+That will create a `node_modules` folder that includes all the dependencies.
+This folder is ignored with `.gitignore` and will not be included in the versioning.
+
 
 
 ## Run the project
@@ -27,6 +37,8 @@ npm install
 ```
 npm start
 ```
+Now you have your project running on: [localhost:8080](http://localhost:8080/)
+
 
 ### To get out, do that: CTRL+C or CMD+C
 
@@ -47,6 +59,6 @@ To add Javascript plugins, is necessary to add on gulpfile the path. Thats neede
 npm test
 ```
 
-* open [http://localhost:9876/](http://localhost:9876/)
+* open [localhost:9876](http://localhost:9876/)
 
 * Have fun

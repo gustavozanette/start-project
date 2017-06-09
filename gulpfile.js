@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 	cleanCSS = require('gulp-clean-css'),
 	source = require('vinyl-source-stream'),
 	gutil = require('gulp-util'),
+	connect = require('gulp-connect'),
 	Server = require('karma').Server;
 
 /* Plugins list in load order */
@@ -83,7 +84,12 @@ gulp.task('watch',function() {
 	gulp.watch(['./assets/js/libs/*.js'],['js_plugins']);
 	/* Styles */
 	gulp.watch(['./assets/css/scss/style.scss', './assets/css/scss/components/**/*.scss'],['styles']);
-	gulp.watch(['./assets/css/libs/*.css'],['css_plugins']);
+	gulp.watch(['./assets/css/scss/libs/**/*.css', './assets/css/scss/libs/**/*.scss'],['css_plugins']);
+});
+
+/* Connect */
+gulp.task('connect', function() {
+	connect.server();
 });
 
 /* Default */
@@ -92,5 +98,6 @@ gulp.task('default', [
 		'js_plugins',
 		'styles',
 		'css_plugins',
+		'connect',
 		'watch'
 	]);
